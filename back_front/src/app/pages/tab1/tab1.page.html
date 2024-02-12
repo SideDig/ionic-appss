@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Productos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let item of resp">
+          <ion-card-header>
+            <ion-row class="ion-justify-content-between">
+              <ion-card-title>{{ item.nombre_producto }}</ion-card-title>
+              <ion-button (click)="item.id !== undefined && eliminarDato(item.id)" shape="round-10" fill="clear"> <ion-icon slot="icon-only"  name="trash-outline"></ion-icon></ion-button>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <p>id: {{ item.id }}</p>
+            <p>Descripción: {{ item.descripcion_producto }}</p>
+            <p>Precio: {{ item.precio_producto }}</p>
+            <p>Categoría: {{ item.nombre_categoria }}</p>
+            <img height="auto" width="300px" src="{{ item.imagen_producto }}">
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

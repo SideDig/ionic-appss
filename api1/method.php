@@ -1,6 +1,8 @@
 <?php
 require "config/Conexion.php";
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE");
+header("Access-Control-Allow-Headers: Content-Type");
 //print_r($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':

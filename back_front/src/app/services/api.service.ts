@@ -22,11 +22,11 @@ export class ApiService {
 
   // Método para enviar datos por POST
   postDatos(datos: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, datos);
+    return this.http.post<any>(this.apiUrl, datos, {responseType: "text" as "json"});
   }
 
   eliminarDato(id: number): Observable<{}> {
-    return this.http.delete<any>(`${this.apiUrl}?id=${id}`);
+    return this.http.delete<any>(`${this.apiUrl}?id=${id}`, {responseType: "text" as "json"});
   }
 }
 

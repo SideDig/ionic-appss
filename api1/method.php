@@ -36,6 +36,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
+         
         $data = json_decode(file_get_contents("php://input"), true);
 
         $nombre_prod = $data['nombre_producto'];
@@ -48,6 +49,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $stmt->bind_param("sssss", $nombre_prod, $descripcion_prod, $precio_prod, $img_prod, $categoria_prod);
 
         if ($stmt->execute()) {
+            header('Content-Type: application/json');
             echo "Datos insertados con éxito.";
         } else {
             echo "Error al insertar datos: " . $stmt->error;

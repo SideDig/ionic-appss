@@ -9,13 +9,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  public apiUrl = 'http://127.0.0.1:80/api1/method.php'; // Reemplaza con la URL de tu API
+  public apiUrl = 'http://127.0.0.1:80/api1/productos'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
   // Método para obtener los datos
   getTopHeadlines(): Observable<productos> {
-    return this.http.get<productos>('http://127.0.0.1:80/api1/method.php').pipe(
+    return this.http.get<productos>(this.apiUrl).pipe(
       map(resp => resp)
     );
   }

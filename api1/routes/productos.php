@@ -3,9 +3,11 @@ require "config/Conexion.php";
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
+header('Content-Type: application/json');
 //print_r($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
+        header('Content-Type: application/json');
         // Consulta SQL para seleccionar datos de la tabla
         $sql = "SELECT p.`id`, 
         p.`nombre_producto`, 
@@ -26,7 +28,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $data[] = $row;
             }
             // Devolver los resultados en formato JSON
-            header('Content-Type: application/json');
+            
             echo json_encode($data);
         } else {
             echo "No se encontraron registros en la tabla.";
@@ -36,11 +38,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-         
+        header('Content-Type: application/json');
         $data = json_decode(file_get_contents("php://input"), true);
 
         $nombre_prod = $data['nombre_producto'];
-        $descripcion_prod = $data['descripcion_producto'];
+        $descripcion_prod = $data['descripcion_producto'];-
         $precio_prod = $data['precio_producto'];
         $img_prod = $data['imagen_producto'];
         $categoria_prod = $data['nombre_categoria'];
@@ -60,13 +62,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'PATCH':
+        
         $data = json_decode(file_get_contents("php://input"), true);
 
         if (!isset($data['id'])) {
             echo "Falta el ID del producto.";
             break;
         }
-
+        header('Content-Type: application/json');
         $id = $data['id'];
         $nombre_prod = isset($data['nombre_producto']) ? $data['nombre_producto'] : null;
         $descripcion_prod = isset($data['descripcion_producto']) ? $data['descripcion_producto'] : null;
@@ -105,8 +108,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'PUT':
+       
         // Verificar si es una solicitud PUT
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            header('Content-Type: application/json');
             // Obtener datos del cuerpo de la solicitud
             $json_data = file_get_contents("php://input");
             $data = json_decode($json_data, true);
@@ -160,9 +165,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'DELETE':
+        
         // Verificar si es una solicitud DELETE
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-        
+         header('Content-Type: application/json');
             $json_data = file_get_contents("php://input");
             $data = json_decode($json_data, true);
 
@@ -183,6 +189,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         $conexion->close();
         break;
+
+        case 'HEAD':
+            if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
+              // Establecer encabezados de respuesta
+              header('Content-Type: application/json');
+              header('Custom-Header: PHP 8, HTML ');
+          
+              // Puedes establecer otros encabezados necesarios aquí
+          
+              // No es necesario enviar un cuerpo en una solicitud HEAD, por lo que no se imprime nada aquí.
+          } else {
+              http_response_code(405); // Método no permitido
+              echo 'Método de solicitud no válido';
+          }
+            break;
 
     default:
         echo 'Tipo de solicitud no definido!';

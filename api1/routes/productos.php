@@ -9,7 +9,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         header('Content-Type: application/json');
         // Consulta SQL para seleccionar datos de la tabla
-        $sql = "SELECT p.`id`, 
+        $sql = "SELECT p.`id_producto`, 
         p.`nombre_producto`, 
         p.`descripcion_producto`, 
         p.`precio_producto`, 
@@ -65,12 +65,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
         
         $data = json_decode(file_get_contents("php://input"), true);
 
-        if (!isset($data['id'])) {
+        if (!isset($data['id_producto'])) {
             echo "Falta el ID del producto.";
             break;
         }
         header('Content-Type: application/json');
-        $id = $data['id'];
+        $id = $data['id_producto'];
         $nombre_prod = isset($data['nombre_producto']) ? $data['nombre_producto'] : null;
         $descripcion_prod = isset($data['descripcion_producto']) ? $data['descripcion_producto'] : null;
         $precio_prod = isset($data['precio_producto']) ? $data['precio_producto'] : null;
@@ -95,7 +95,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         $actualizaciones_str = implode(', ', $actualizaciones);
-        $sql = "UPDATE productos SET $actualizaciones_str WHERE id = $id";
+        $sql = "UPDATE productos SET $actualizaciones_str WHERE id_producto = $id";
 
         if ($conexion->query($sql) === TRUE) {
             echo "Registro actualizado con éxito.";
@@ -117,9 +117,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $data = json_decode($json_data, true);
 
             // Verificar si se recibieron datos válidos
-            if ($data && isset($data['id'])) {
+            if ($data && isset($data['id_producto'])) {
                 // Obtener valores
-                $id_prod = $data['id'];
+                $id_prod = $data['id_producto'];
                 $nombre_prod = isset($data['nombre_producto']) ? $data['nombre_producto'] : null;
                 $descripcion_prod = isset($data['descripcion_producto']) ? $data['descripcion_producto'] : null;
                 $precio_prod = isset($data['precio_producto']) ? $data['precio_producto'] : null;
@@ -145,7 +145,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 $actualizaciones_str = implode(', ', $actualizaciones);
-                $sql = "UPDATE productos SET $actualizaciones_str WHERE id = $id_prod";
+                $sql = "UPDATE productos SET $actualizaciones_str WHERE id_producto = $id_prod";
 
                 // Ejecutar consulta SQL
                 if ($conexion->query($sql) === TRUE) {
@@ -172,9 +172,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $json_data = file_get_contents("php://input");
             $data = json_decode($json_data, true);
 
-            $id_prod = isset($_GET['id']) ? $_GET['id'] : (isset($data['id']) ? $data['id'] : null);
+            $id_prod = isset($_GET['id_producto']) ? $_GET['id_producto'] : (isset($data['id_producto']) ? $data['id_producto'] : null);
             if ($id_prod !== null) {
-                $sql = "DELETE FROM productos WHERE id = $id_prod";
+                $sql = "DELETE FROM productos WHERE id_producto = $id_prod";
 
                 if ($conexion->query($sql) === TRUE) {
                     echo "Registro eliminado con éxito.";

@@ -25,15 +25,14 @@ export class Tab1Page implements OnInit {
       });
   }
 
-  eliminarDato(id: number) {
-    this.newService.eliminarDato(id).subscribe(
-      () => {
-        console.log("Producto eliminado con éxito");
-        // Filtrar la lista actual para quitar el elemento eliminado
-        this.resp = this.resp.filter(item => item.id !== id);
+  eliminarDato(id_producto: number) {
+    this.newService.eliminarDato(id_producto).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.resp = this.resp.filter(item => item.id_producto !== id_producto);
       },
       error => {
-        console.error("Error al eliminar el producto:", error);
+        console.error("Error al eliminar el registro:", error);
       }
     );
   }

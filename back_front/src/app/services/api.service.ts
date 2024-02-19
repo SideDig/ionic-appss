@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
 import { productos } from '../interfaces';
 import { map } from 'rxjs/operators';
@@ -25,8 +25,13 @@ export class ApiService {
     return this.http.post<any>(this.apiUrl, datos, {responseType: "text" as "json"});
   }
 
-  eliminarDato(id: number): Observable<{}> {
-    return this.http.delete<any>(`${this.apiUrl}?id=${id}`, {responseType: "text" as "json"});
+  eliminarDato(id_producto: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      body: { id_producto: id_producto },
+      responseType: 'text' as 'json'
+    };
+    return this.http.delete<any>(this.apiUrl, {...httpOptions});
   }
 }
 

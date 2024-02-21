@@ -8,3 +8,11 @@ export interface productos {
     imagen_producto?:      String;
     nombre_categoria?:     number;
 }
+
+export interface User {
+    id_usuario: number;
+    usuario:    string;
+    correo:     string;
+    contrasena: string;
+    rol:        number;
+}

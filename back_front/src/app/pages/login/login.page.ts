@@ -15,7 +15,6 @@ import {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  name: string = "";
   email: string = "";
   password: string = "";
   
@@ -29,11 +28,9 @@ export class LoginPage implements OnInit {
         this.password
       );
       console.log(user);
-      // Redirigir a la página de tabs después de iniciar sesión exitosamente
       this.router.navigate(['/tabs']);
     } catch (error) {
       console.error("Error de inicio de sesión:", error);
-      // Manejar el error de inicio de sesión aquí
     }
   }
 

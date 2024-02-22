@@ -1,36 +1,36 @@
-<ion-content>
-  <ion-grid>
-    <ion-row justify-content-center>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Registro</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
+<div id="content">
+  <div class="grid">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h1>Registro</h1>
+          </div>
+          <div class="card-content">
             <form class="form_login" (ngSubmit)="signup()">
-              <ion-item>
-                <ion-label position="floating">Nombre de usuario</ion-label>
-                <ion-input type="text" [(ngModel)]='name' name="name" required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Correo electrónico</ion-label>
-                <ion-input type="email" [(ngModel)]='email' name="email" required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Contraseña</ion-label>
-                <ion-input type="password" [(ngModel)]='password' name="password" required></ion-input>
-              </ion-item>
-              <!-- <ion-item> -->
-                <!-- <ion-label position="floating">Repetir contraseña</ion-label> -->
-                <!-- <ion-input type="password" [(ngModel)]='repeatPassword' name="repeatPassword" required></ion-input> -->
-              <!-- </ion-item> -->
-              <ion-button type="submit" (click)="signup()" class="iniciar_sesion">
+              <div class="item">
+                <label for="name" position="floating">Nombre de usuario</label>
+                <input type="text" [(ngModel)]='name' id="name" name="name" required>
+              </div>
+              <div class="item">
+                <label for="email" position="floating">Correo electrónico</label>
+                <input type="email" [(ngModel)]='email' id="email" name="email" required>
+              </div>
+              <div class="item">
+                <label for="password" position="floating">Contraseña</label>
+                <input type="password" [(ngModel)]='password' id="password" name="password" required>
+              </div>
+              <!-- <div class="item"> -->
+                <!-- <label for="repeatPassword" position="floating">Repetir contraseña</label> -->
+                <!-- <input type="password" [(ngModel)]='repeatPassword' id="repeatPassword" name="repeatPassword" required> -->
+              <!-- </div> -->
+              <button type="submit" (click)="signup()" class="iniciar_sesion">
                 Registrate
-              </ion-button>
+              </button>
             </form>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

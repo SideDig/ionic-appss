@@ -25,7 +25,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideFirebaseApp(() => initializeApp({"projectId":"gamingshop-608ed","appId":"1:777806851284:web:81263b9f13433e0965df41","storageBucket":"gamingshop-608ed.appspot.com","apiKey":"AIzaSyAMohkhuVtkyzhAOfn8zudF2Ivml0F7ZWQ","authDomain":"gamingshop-608ed.firebaseapp.com","messagingSenderId":"777806851284"}))
   ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

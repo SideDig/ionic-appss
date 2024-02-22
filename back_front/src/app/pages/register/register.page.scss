@@ -1,49 +1,102 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    width: 400px;
-  }
-  .container h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .btn-submit {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .btn-submit:hover {
-    background-color: #0056b3;
-  }
+/* Resets default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container */
+.contenedor_registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* Grid container */
+.grid {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header */
+.card-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Card content */
+.card-content {
+  padding: 20px;
+}
+
+/* Form styling */
+.form_login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label styling */
+.item label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Input styling */
+.item input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.item input:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Button styling */
+.iniciar_sesion {
+  background-color: #2980b9;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iniciar_sesion:hover {
+  background-color: #17669e;
+}
+
+/* Additional styling for elegance */
+.card-header {
+  background-color: #f0f0f0;
+}
+
+.form_login {
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}

@@ -7,13 +7,16 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
+import { NavbarModule } from 'src/app/navbar/navbar.module';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    NavbarModule
   ],
   declarations: [Tab1Page]
 })

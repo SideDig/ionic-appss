@@ -11,28 +11,28 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #000000;
 }
 
 /* Grid container */
 .grid {
+  margin: 20px;
   width: 400px;
-  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
 }
 
 /* Card header */
 .card-header {
   text-align: center;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
+  padding: 15px;
+
 }
 
 .card-header h1 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
+  font-size: 27px;
+
+  color: #ffffff;
 }
 
 /* Card content */
@@ -52,45 +52,45 @@
   display: block;
   font-size: 16px;
   font-weight: 500;
-  color: #666;
+  color: #ffffff;
   margin-bottom: 5px;
 }
 
 /* Input styling */
 .item input {
+  margin: 2px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffffff;
   border-radius: 5px;
-  font-size: 16px;
-  color: #333;
+  font-size: 17px;
+  letter-spacing: 0.8px;
+  color: #ffffff;
 }
 
 .item input:focus {
-  border-color: #2980b9;
+  border-color: #00bd10;
   outline: none;
 }
 
 /* Button styling */
 .iniciar_sesion {
-  background-color: #2980b9;
+  background-color: #058a0b;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 550;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .iniciar_sesion:hover {
-  background-color: #17669e;
+  background-color: #1fbb00;
 }
 
 /* Additional styling for elegance */
-.card-header {
-  background-color: #f0f0f0;
-}
+
 
 .form_login {
   justify-content: space-between;
@@ -99,4 +99,12 @@
 .item {
   display: flex;
   flex-direction: column;
+}
+
+.titulo_aling{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

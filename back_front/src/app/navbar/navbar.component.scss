@@ -7,3 +7,16 @@
     align-content: center;
     justify-content: flex-start;
 }
+
+.align_btns{
+    padding-left: 85px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+a {
+    margin:10px;
+}

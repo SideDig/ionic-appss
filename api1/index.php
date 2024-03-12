@@ -22,7 +22,7 @@ class Router {
 $router = new Router();
 $router->addRoute('/usuarios', './routes/usuarios.php');
 $router->addRoute('/productos', './routes/productos.php');
-
+$router->addRoute('/auth', './routes/auth.php');
 
 
 $url = str_replace('/api1', '', $_SERVER['REQUEST_URI']);

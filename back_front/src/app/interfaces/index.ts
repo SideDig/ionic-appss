@@ -10,7 +10,7 @@ export interface productos {
 }
 
 export interface User {
-    id_usuario: String;
+    id_usuario: string;
     usuario:    string;
     correo:     string;
     contrasena: string;

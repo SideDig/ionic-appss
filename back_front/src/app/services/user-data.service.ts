@@ -23,4 +23,11 @@ export class UserDataService {
     sessionStorage.removeItem('correo');
     sessionStorage.removeItem('token');
   }
+
+  printUserData() {
+    const correo = this.getCorreo();
+    const token = this.getToken();
+    console.log('Correo del usuario:', correo);
+    console.log('Token del usuario:', token);
+  }
 }

@@ -6,8 +6,9 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { NavbarModule } from 'src/app/navbar/navbar.module';
+
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { NavbarModule } from 'src/app/navbar/navbar.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    NavbarModule
+    SharedModule
   ],
   declarations: [Tab1Page]
 })

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { CardsProductsComponent } from '../components/cards-products/cards-products.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    CardsProductsComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   ],
 
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    CardsProductsComponent
   ]
 })
 export class SharedModule { }

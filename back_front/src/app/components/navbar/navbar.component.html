@@ -7,6 +7,7 @@
     <div class="align_btns">
       <ng-container *ngIf="userEmail; else loginRegisterButtons">
         <span>{{ userEmail }}</span>
+        <button (click)="logout()">Cerrar sesión</button>
       </ng-container>
       <ng-template #loginRegisterButtons>
         <a href="/login" class="login_icon">

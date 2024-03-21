@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
   name: string = '';
   email: string = '';
   password: string = '';
@@ -24,7 +24,7 @@ export class RegisterPage implements OnInit {
     private userDataService: UserDataService
   ) {}
 
-  ngOnInit() {}
+  
 
   async signup() {
     try {

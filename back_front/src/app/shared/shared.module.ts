@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     NavbarComponent,
-    CardsProductsComponent
+    CardsProductsComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -18,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 
   exports: [
     NavbarComponent,
-    CardsProductsComponent
+    CardsProductsComponent,
   ]
 })
 export class SharedModule { }

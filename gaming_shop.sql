@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2024 a las 05:44:12
+-- Tiempo de generación: 25-03-2024 a las 05:46:06
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -28,30 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `banners` (
-  `id` int(11) NOT NULL,
+  `id_banner` int(11) NOT NULL,
   `nombre_banner` varchar(150) NOT NULL,
   `link_banner` varchar(250) NOT NULL,
   `imagen_banner` varchar(400) NOT NULL,
-  `id_categoria` int(11) NOT NULL
+  `id_categoria` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `banners`
 --
 
-INSERT INTO `banners` (`id`, `nombre_banner`, `link_banner`, `imagen_banner`, `id_categoria`) VALUES
-(70, 'GOW', '', '../banners/Banner-god-of-war-ragnarok.jpg', 1),
-(71, 'DI2', '', '../banners/DI2.jpg', 1),
-(72, 'FG', '', '../banners/Fallguys.jpg', 1),
-(73, 'Farcry4', '', '../banners/far-cry-4.jpg', 2),
-(74, 'Farcry6', '', '../banners/farcry6.jpg', 2),
-(75, 'halo infinity', '', '../banners/halo_infinity.jpg', 2),
-(76, 'HL', '', '../banners/HL.jpg', 3),
-(77, 'GOW', '', '../banners/Banner-god-of-war-ragnarok.jpg', 3),
-(78, 'OW', '', '../banners/OW.jpg', 3),
-(79, 'TLOZBW', '', '../banners/TLOZBW.jpg', 4),
-(80, 'The witcher', '', '../banners/Thewitcher.jpg', 4),
-(83, 'Fallout 4', '', '../banners/fallout4.jpg', 1);
+INSERT INTO `banners` (`id_banner`, `nombre_banner`, `link_banner`, `imagen_banner`, `id_categoria`) VALUES
+(85, 'Pruebaaa', '', 'https://img.freepik.com/vector-gratis/portada-facebook-configuracion-juegos-neon-diseno-plano_23-2149833533.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -96,7 +85,9 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `imagen_producto`, `id_categorias`) VALUES
-(68, 'PRUEBAA', 'dafklafhjlakf', 1200, 'https://cdn.kobo.com/book-images/2293d52f-680c-49e7-a75c-9c3955e34768/353/569/90/False/call-of-duty-black-ops-ii-strategy-guide.jpg', 2);
+(85, 'nfgn', 'dhdrdrhdr', 34, '3tsegse', 3),
+(86, 'ururtj', 'rtjrtj', 5, 'jjftjft', 5),
+(88, 'nbbfbdbegfdbggdfgsn', 'dhdrbdbdrbdrhdr', 35453454, '3tsegse', 3);
 
 -- --------------------------------------------------------
 
@@ -189,7 +180,12 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `correo`, `contrasena`, `id_rol
 (52, 'ffgegsegseg', '3fdafawf@gmail.com', '$2y$10$DIoIcdLDWjtQqJ60lO/YGeBTJDAlw9JeRflVbcBF9LUTo5SC9UaK6', 1),
 (53, 'ghsdhgdxrhdr', 'awklfhawlkf@gmail.com', '$2y$10$W7hv7WHIfSBGeADBAW/wC.HysL9cHSJJxMnWszbfJSonzK4Gr0qrK', 1),
 (54, 'awfasfsdgsdgs', 'egsdvxzcvbxbvxf@gmail.com', '$2y$10$6c8nJwkcJsGBuFSX17QBfOdMuL0Q4yPYrn3M5eDKczSsi14C9ZvJG', 1),
-(55, 'awfasfsdgsdgs', 'egsdvxzcvbdxbvxf@gmail.com', '$2y$10$Mzsd.AJFyzuXmbzZzFzxTOpx2pnU2hOTge.dGwVyJQeXSO.BcZUAW', 1);
+(55, 'awfasfsdgsdgs', 'egsdvxzcvbdxbvxf@gmail.com', '$2y$10$Mzsd.AJFyzuXmbzZzFzxTOpx2pnU2hOTge.dGwVyJQeXSO.BcZUAW', 1),
+(56, 'Alfonso', 'apiboy@gmail.com', '$2y$10$qyqFWQO4iWpFvtLJpxZrne9VIeq69HyvvdLE7nDhiiLjWx/Alx3ZO', 1),
+(57, 'Alfonso', 'elapiboy121212@gmail.com', '$2y$10$P7o/jkQl70wvKIkqEXg2zO4lJM2PyhMMG8ynNREq.2i6Wo99ZdMo.', 1),
+(58, 'noseeeee1', 'nose12121212@gmail.com', '$2y$10$aCJeXOsheoUiZ1ZGrFjDhOfxiPwieIIuVzZQaIwqbyvKeK4pDToQy', 1),
+(59, '1213131', 'asssss@gmail.com', '$2y$10$aubnXa8muljRNV5Eja5u2eeSV9oVT7dJJC13FlZ/fQugz.AuIfgsC', 1),
+(60, 'Jose Alfonso', 'JoseARS@gmail.com', '$2y$10$riLQvGPizLqjsYwH5zbi3ul7btSfYBg5ukGX/fPYk90JAS1OKZspi', 1);
 
 --
 -- Índices para tablas volcadas
@@ -199,7 +195,7 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `correo`, `contrasena`, `id_rol
 -- Indices de la tabla `banners`
 --
 ALTER TABLE `banners`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_banner`),
   ADD KEY `categorias_banners` (`id_categoria`) USING BTREE;
 
 --
@@ -236,7 +232,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -248,7 +244,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -260,7 +256,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Restricciones para tablas volcadas

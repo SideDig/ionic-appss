@@ -16,3 +16,9 @@ export interface User {
     contrasena: string;
     rol:        number;
 }
+
+export interface banners {
+    nombre_banner: string;
+    link_banner:   string;
+    imagen_banner: string;
+}

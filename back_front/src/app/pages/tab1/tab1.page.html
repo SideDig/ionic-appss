@@ -7,5 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <swiper-container
+    #swiper
+    (afterinit)="swiperReady()"
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true">
+    <swiper-slide *ngFor="let image of images">
+      <img [src]="image" />
+    </swiper-slide>
+  </swiper-container>
   <app-cards-products></app-cards-products>
 </ion-content>

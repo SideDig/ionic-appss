@@ -66,4 +66,8 @@ export class RegisterPage {
   gotoLogin() {
     this.navCntrl.navigateBack('login');
   }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']); 
+  }
 }

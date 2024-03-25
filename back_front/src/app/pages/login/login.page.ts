@@ -39,4 +39,8 @@ export class LoginPage{
   gotoSignup() {
     this.navCntrl.navigateForward('signup');
   }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']); // Asegúrate de que la ruta coincide con la configuración de tu router
+  }
 }

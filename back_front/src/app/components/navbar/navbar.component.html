@@ -12,7 +12,7 @@
           <ng-template>
             <h1>Bienvenido </h1>
             <span style="font-size: 17px;">{{userEmail }}</span>
-            <button class="btn_cerrarsesion" (click)="logout()">Cerrar sesión</button>
+            <button class="btn_cerrarsesion" (click)="modal.dismiss()" (click)="logout()">Cerrar sesión</button>
           </ng-template>
         </ion-modal>
       </ng-container>

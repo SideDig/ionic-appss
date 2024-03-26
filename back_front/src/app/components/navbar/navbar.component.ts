@@ -10,7 +10,7 @@ import { Auth, signOut } from '@angular/fire/auth'; // Importa el servicio de au
 })
 export class NavbarComponent implements OnInit { // Implementa la interfaz OnInit
   userEmail: string = ""; // Declara e inicializa la propiedad userEmail
-
+  
   constructor(
     private router: Router,
     private auth: Auth,

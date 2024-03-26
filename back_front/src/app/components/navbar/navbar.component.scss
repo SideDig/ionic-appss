@@ -11,12 +11,19 @@
     align-items: center;
 }
 
-.align_btns{
-    padding-left: 1px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-}
-
+ion-modal#example-modal {
+    --width: 70%;
+    --min-width: 80%;
+    --height: 10rem;
+    --border-radius: 10px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+  }
+  
+  .btn_cerrarsesion{
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: rgb(162, 0, 0);
+    color:rgb(255, 255, 255);
+    font-size: 17px;
+  }

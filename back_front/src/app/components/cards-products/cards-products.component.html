@@ -1,23 +1,36 @@
-<div style="display: flex; justify-content: center; align-items: center;">
-  <div>
-    <ion-row>
-      <!-- Establece cada ion-col para que ocupe 6 de 12 columnas, asegurando 2 elementos por fila en la mayoría de los dispositivos móviles -->
-      <ion-col size="6" *ngFor="let item of resp">
-        <article class="card">
-          <div class="card-int">
-            <span class="card__span">{{ item.nombre_categoria }}</span>
-            <div class="img">
-              <img height="100%" width="auto" [src]="item.imagen_producto">
-            </div>
-            <div class="card-data">
-              <p class="title">{{ item.nombre_producto }}</p>
-              <p>Precio: ${{ item.precio_producto }}</p>
-              <button class="button">Más información</button>
-              <button class="button" (click)="item.id_producto !== undefined && eliminarDato(item.id_producto)">Eliminar</button>
-            </div>
-          </div>
-        </article>
-      </ion-col>
-    </ion-row>
+
+
+  <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
   </div>
-</div>
+
+ 
+  <div *ngIf="error" style="text-align: center;">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div>
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of resp">
+            <article class="card">
+              <div class="card-int">
+                <span class="card__span">{{ item.nombre_categoria }}</span>
+                <div class="img">
+                  <img height="100%" width="auto" [src]="item.imagen_producto">
+                </div>
+                <div class="card-data">
+                  <p class="title">{{ item.nombre_producto }}</p>
+                  <p>Precio: ${{ item.precio_producto }}</p>
+                  <button class="button">Más información</button>
+                  <button class="button" (click)="confirmarEliminacion(item.id_producto)">Eliminar</button>
+                </div>
+              </div>
+            </article>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+

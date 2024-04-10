@@ -14,11 +14,7 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
-    path: 'admin-agregar-producto',
-    loadChildren: () => import('./pages/admin-agregar-producto/admin-agregar-producto.module').then( m => m.AdminAgregarProductoPageModule)
   }
-
 
 ];
 @NgModule({

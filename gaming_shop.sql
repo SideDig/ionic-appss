@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2024 a las 05:46:06
+-- Tiempo de generación: 10-04-2024 a las 08:23:18
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -40,7 +40,8 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id_banner`, `nombre_banner`, `link_banner`, `imagen_banner`, `id_categoria`) VALUES
-(85, 'Pruebaaa', '', 'https://img.freepik.com/vector-gratis/portada-facebook-configuracion-juegos-neon-diseno-plano_23-2149833533.jpg', NULL);
+(85, 'Pruebaaa', '', 'https://img.freepik.com/vector-gratis/portada-facebook-configuracion-juegos-neon-diseno-plano_23-2149833533.jpg', NULL),
+(86, 'gsegawfasw', 'fawfawga', 'https://img.freepik.com/vector-gratis/plantilla-banner-contraccion-juegos-neon-plano_23-2149885763.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -58,12 +59,43 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
-(1, 'inicio'),
-(2, 'Xbox series X/S'),
-(3, 'PS5'),
-(4, 'Nintendo switch'),
-(5, 'PC'),
-(6, 'Antiguas generaciones');
+(1, 'Acción'),
+(2, 'Aventura'),
+(3, 'Rol (RPG)'),
+(4, 'Simulación'),
+(5, 'Estrategia'),
+(6, 'Deportes'),
+(7, 'Carreras'),
+(8, 'Lucha'),
+(9, 'Horror de Supervivencia'),
+(10, 'Puzzle'),
+(11, 'MMO'),
+(12, 'Plataformas'),
+(13, 'Shooter'),
+(14, 'Indie'),
+(15, 'Sandbox');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plataformas`
+--
+
+CREATE TABLE `plataformas` (
+  `id` int(11) NOT NULL,
+  `plataforma` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `plataformas`
+--
+
+INSERT INTO `plataformas` (`id`, `plataforma`) VALUES
+(1, 'PC'),
+(2, 'PlayStation'),
+(3, 'Xbox'),
+(4, 'Nintendo Switch'),
+(5, 'Antiguas generaciones');
 
 -- --------------------------------------------------------
 
@@ -77,17 +109,40 @@ CREATE TABLE `productos` (
   `descripcion_producto` varchar(500) NOT NULL,
   `precio_producto` int(11) NOT NULL,
   `imagen_producto` varchar(250) NOT NULL,
-  `id_categorias` int(11) DEFAULT 1
+  `id_categorias` int(11) DEFAULT 1,
+  `id_plataforma` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `imagen_producto`, `id_categorias`) VALUES
-(85, 'nfgn', 'dhdrdrhdr', 34, '3tsegse', 3),
-(86, 'ururtj', 'rtjrtj', 5, 'jjftjft', 5),
-(88, 'nbbfbdbegfdbggdfgsn', 'dhdrbdbdrbdrhdr', 35453454, '3tsegse', 3);
+INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `imagen_producto`, `id_categorias`, `id_plataforma`) VALUES
+(94, 'The Legend of Zelda: Breath of the Wild', 'Explora el vasto mundo de Hyrule en esta aventura épica.', 60, 'imagenZelda.jpg', 1, 1),
+(95, 'Super Mario Odyssey', 'Únete a Mario en un gigantesco viaje por el mundo.', 50, 'imagenMario.jpg', 1, 1),
+(96, 'Minecraft', 'Crea y explora tu propio mundo donde el único límite es tu imaginación.', 27, 'imagenMinecraft.jpg', 2, 3),
+(97, 'Elden Ring', 'Enfréntate a un mundo lleno de peligros y maravillas en el nuevo juego de FromSoftware.', 60, 'imagenEldenRing.jpg', 3, 2),
+(98, 'God of War Ragnarök', 'Sigue la próxima etapa del viaje épico de Kratos y Atreus.', 60, 'imagenGodOfWar.jpg', 1, 4),
+(99, 'Animal Crossing: New Horizons', 'Crea tu propio paraíso en una isla desierta.', 56, 'imagenAnimalCrossing.jpg', 1, 1),
+(100, 'Final Fantasy VII Remake', 'Redescubre el icónico RPG que redefinió el género, ahora totalmente reimaginado.', 60, 'imagenFFVII.jpg', 1, 4),
+(101, 'Cyberpunk 2077', 'Sumérgete en el mundo de Night City en este RPG de mundo abierto.', 50, 'imagenCyberpunk.jpg', 3, 2),
+(102, 'Halo Infinite', 'Continúa la saga del Jefe Maestro en el más grande Halo hasta la fecha.', 60, 'imagenHalo.jpg', 1, 5),
+(103, 'Genshin Impact', 'Explora el vasto mundo de Teyvat en esta experiencia de RPG de mundo abierto.', 0, 'imagenGenshin.jpg', 2, 3),
+(104, 'The Witcher 3: Wild Hunt', 'Embárcate en una aventura épica en un mundo oscuro lleno de peligros.', 40, 'imagenWitcher3.jpg', 3, 2),
+(105, 'Fortnite', 'Compite para ser el último en pie en el fenómeno del battle royale.', 0, 'imagenFortnite.jpg', 4, 3),
+(106, 'Assassin’s Creed Valhalla', 'Vive como un legendario vikingo en la búsqueda de gloria.', 60, 'imagenACValhalla.jpg', 3, 2),
+(107, 'Call of Duty: Warzone', 'Enfréntate en esta frenética batalla para sobrevivir.', 0, 'imagenCODWarzone.jpg', 4, 3),
+(108, 'Resident Evil Village', 'Experimenta el terror de sobrevivencia en un nuevo nivel.', 60, 'imagenREVillage.jpg', 1, 4),
+(111, 'pruebaa', 'pruebha', 12222, 'jfdlaf', 4, 4),
+(112, 'Purebaaa', 'aadasafasfaf', 2323, 'fgg', 3, 5),
+(113, 'pruebaa2', 'fjkjegksg', 31323, 'HFKSGSG', 2, 3),
+(114, 'gsgsgs', 'egsegfsdgs', 222, 'sd', 5, 2),
+(115, 'papu', 'papu', 123, 'sgsg', 2, 5),
+(116, 'pepe', 'pepe', 1213, 'ppe', 3, 5),
+(124, 'tilin', 'tiluun', 1212, 'fsgg', 13, 3),
+(125, 'aaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaa', 1, 'aaaaaaaa', 3, 1),
+(126, 'nnnnnnn', 'nnnnnn', 1, 'aaaaaaaa', 3, 1),
+(127, 'noseeeee', 'noseeee', 1111, 'faaa', 14, 3);
 
 -- --------------------------------------------------------
 
@@ -148,44 +203,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `usuario`, `correo`, `contrasena`, `id_rol`) VALUES
-(12, 'alfonso', 'alfonso@gmail.com', '12345', 1),
-(14, 'admin', '', 'admin', 2),
-(22, 'fsdfsdv', 'sfaff', 'qwer', 1),
-(23, 'alfonso', 'tilin@gmail.com', '12345', 1),
-(25, 'alfonso', 'side@gmail.com', '12345', 1),
-(27, 'alfonso', 'side@gmail.com', 'asdf', 1),
-(29, 'alfonso', 'side@gmail.com', 'asdf', 1),
-(30, 'alfonso', 'ffaaf', '123456', 1),
-(31, 'alfonso', 'sdasd', '', 1),
-(32, 'dasf', 'feaf', '', 1),
-(33, 'aawd', 'awdsdf', '', 1),
-(34, 'asdawafa', 'fawffaf', '12345', 1),
-(35, 'asdawafa', 'fawffaf', '12345', 1),
-(36, 'asdasd', 'adad', 'qwer', 1),
-(37, 'alfonso', 'tilin@gmail.com', 'alfonso', 1),
-(38, 'alfonso', 'tilin@gmail.com', 'qwer', 1),
-(39, 'ffsegse', 'papu@gmail.com', '1234567890', 1),
-(40, 'prueba postman', 'postman@gmail.com', '$2y$10$vN8cQm4gMHCnLbWImUDRheV1wSFWosGA.bCLGSIDyx8oe7ra980zK', 1),
-(41, 'prueba postman 2', 'postman123@gmail.com', '$2y$10$j02eL.YB4iE8Ap5tx5pKu.wCULDCcdfxJb5RQs7dFCy626RbkmpMy', 1),
-(42, 'prueba postman 2', 'postman123@gmail.com', '$2y$10$dLMXivkjkOjEYRf13gC1BOeRzvgZvVIgqythalHVzW9iWb6YHrXe.', 1),
-(43, 'alfonso', 'tilin@gmail.com', '$2y$10$TkeDvj6o2Eo/2gPR.lQW9u1xZjVyHV6lhZhb2bSsodrFpzwTlbo/2', 1),
-(44, 'thhdrhdrh', 'as@gmail.com', '$2y$10$CYFm2aW25JLUY3cz0.DNl.eR6qQnY2scFBi9LO6c9qBQ1y7MuLA.q', 1),
-(45, 'papuuu', 'nose@gmail.com', '$2y$10$S7fS2W.QCer80JdJd6kNTeXvFUI02RA3jpPZPz3loeEWOevpY1moK', 1),
-(46, 'omg', 'lol@gmail.com', '$2y$10$gqCxEt3rWzpfmEklCT3zKe5enMgH4EikE4Ir885BeceGAjIcX2Z8S', 1),
-(47, 'omg', 'lol31314@gmail.com', '$2y$10$ctM3FzPVBBJgVWFbCkzk0uk97DlbYG2tGqusqnnawQulm5oJ7vRJm', 1),
-(48, 'omg', 'lol31314535235@gmail.com', '$2y$10$v5v/XJaD.bgrCfkzcqp0Ke8oJTQoRQeJLJoo3efuDbiErNCrdW3.O', 1),
-(49, 'dafawfgawf', 'dafdawfawf@gmail.com', '$2y$10$dklLbLPDkb9kI79isLaYMe/9CrShKhqJ3ebY6NiOgoYCCD2cOwfHu', 1),
-(50, 'dfsegseggse', 'efkwef@gmail.com', '$2y$10$8EjPVVoZmIXopiDL1dkgP.IjBc8bbYSif9fk3rTngwCSoWbSa6jWO', 1),
-(51, 'noseee', 'jgkeg@gmail.com', '$2y$10$U11A4puCCUXF21q91OzFtuA6LSQZk8RjgzphDtxPotEguHMLH2IOi', 1),
-(52, 'ffgegsegseg', '3fdafawf@gmail.com', '$2y$10$DIoIcdLDWjtQqJ60lO/YGeBTJDAlw9JeRflVbcBF9LUTo5SC9UaK6', 1),
-(53, 'ghsdhgdxrhdr', 'awklfhawlkf@gmail.com', '$2y$10$W7hv7WHIfSBGeADBAW/wC.HysL9cHSJJxMnWszbfJSonzK4Gr0qrK', 1),
-(54, 'awfasfsdgsdgs', 'egsdvxzcvbxbvxf@gmail.com', '$2y$10$6c8nJwkcJsGBuFSX17QBfOdMuL0Q4yPYrn3M5eDKczSsi14C9ZvJG', 1),
-(55, 'awfasfsdgsdgs', 'egsdvxzcvbdxbvxf@gmail.com', '$2y$10$Mzsd.AJFyzuXmbzZzFzxTOpx2pnU2hOTge.dGwVyJQeXSO.BcZUAW', 1),
-(56, 'Alfonso', 'apiboy@gmail.com', '$2y$10$qyqFWQO4iWpFvtLJpxZrne9VIeq69HyvvdLE7nDhiiLjWx/Alx3ZO', 1),
-(57, 'Alfonso', 'elapiboy121212@gmail.com', '$2y$10$P7o/jkQl70wvKIkqEXg2zO4lJM2PyhMMG8ynNREq.2i6Wo99ZdMo.', 1),
-(58, 'noseeeee1', 'nose12121212@gmail.com', '$2y$10$aCJeXOsheoUiZ1ZGrFjDhOfxiPwieIIuVzZQaIwqbyvKeK4pDToQy', 1),
-(59, '1213131', 'asssss@gmail.com', '$2y$10$aubnXa8muljRNV5Eja5u2eeSV9oVT7dJJC13FlZ/fQugz.AuIfgsC', 1),
-(60, 'Jose Alfonso', 'JoseARS@gmail.com', '$2y$10$riLQvGPizLqjsYwH5zbi3ul7btSfYBg5ukGX/fPYk90JAS1OKZspi', 1);
+(64, 'admin', 'admin12121@gmail.com', '$2y$10$AVCttvDcGVkA.UnIb8nAluxRq1IKRTQ3eFFRu/eLyyyKq8JjAquJa', 2),
+(65, 'Alfonso', 'prueba1212@gmail.com', '$2y$10$h/xDcz9gRhTmZS2dsNdYSusJxnPhvB.jvDZLBVIFJW.WXvhCrCUgm', 1),
+(66, 'no soy admin', 'noadmin@gmail.com', '$2y$10$Jl4IWZ/nHxmN9MWpjixSre4akczro4OXMFxQaGYIQTwb1irpyKgei', 1);
 
 --
 -- Índices para tablas volcadas
@@ -205,11 +225,18 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `plataformas`
+--
+ALTER TABLE `plataformas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`),
-  ADD KEY `categorias_productos` (`id_categorias`);
+  ADD KEY `categorias_productos` (`id_categorias`),
+  ADD KEY `id_plataforma` (`id_plataforma`);
 
 --
 -- Indices de la tabla `roles`
@@ -232,19 +259,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
-
---
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -256,7 +277,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Restricciones para tablas volcadas
@@ -272,7 +293,8 @@ ALTER TABLE `banners`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categorias`) REFERENCES `categorias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categorias`) REFERENCES `categorias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`id_plataforma`) REFERENCES `plataformas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`

@@ -7,23 +7,25 @@ header('Content-Type: application/json');
 //print_r($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        $searchTerm = isset($_GET['q']) ? $_GET['q'] : '';
-    
+        $searchTerm = isset($_GET['buscar']) ? $_GET['buscar'] : '';
+
         $sql = "SELECT p.`id_producto`, 
                 p.`nombre_producto`, 
                 p.`descripcion_producto`, 
                 p.`precio_producto`, 
                 p.`imagen_producto`, 
-                c.`categoria` AS `nombre_categoria`
-                FROM `productos` p
-                JOIN `categorias` c ON p.`id_categorias` = c.`id`";
-    
+                c.`categoria` AS `nombre_categoria`,
+                pf.`plataforma` AS `nombre_plataforma`
+        FROM `productos` p
+        JOIN `categorias` c ON p.`id_categorias` = c.`id`
+        JOIN `plataformas` pf ON p.`id_plataforma` = pf.`id`";
+
         if (!empty($searchTerm)) {
             $sql .= " WHERE p.`nombre_producto` LIKE '%$searchTerm%'";
         }
-    
+
         $query = $conexion->query($sql);
-    
+
         if ($query->num_rows > 0) {
             $data = array();
             while ($row = $query->fetch_assoc()) {
@@ -33,7 +35,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         } else {
             echo "No se encontraron registros en la tabla.";
         }
-    
+
         $conexion->close();
         break;
 
@@ -42,13 +44,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $data = json_decode(file_get_contents("php://input"), true);
 
         $nombre_prod = $data['nombre_producto'];
-        $descripcion_prod = $data['descripcion_producto'];-
+        $descripcion_prod = $data['descripcion_producto'];
         $precio_prod = $data['precio_producto'];
         $img_prod = $data['imagen_producto'];
         $categoria_prod = $data['nombre_categoria'];
+        $plataforma_prod = $data['nombre_plataforma'];
 
-        $stmt = $conexion->prepare("INSERT INTO productos (nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categorias) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $nombre_prod, $descripcion_prod, $precio_prod, $img_prod, $categoria_prod);
+        $stmt = $conexion->prepare("INSERT INTO productos (nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categorias, id_plataforma) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $nombre_prod, $descripcion_prod, $precio_prod, $img_prod, $categoria_prod, $plataforma_prod);
 
         if ($stmt->execute()) {
             header('Content-Type: application/json');
@@ -62,7 +65,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'PATCH':
-        
+
         $data = json_decode(file_get_contents("php://input"), true);
 
         if (!isset($data['id_producto'])) {
@@ -108,7 +111,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'PUT':
-       
+
         // Verificar si es una solicitud PUT
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
             header('Content-Type: application/json');
@@ -165,10 +168,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
     case 'DELETE':
-        
+
         // Verificar si es una solicitud DELETE
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-         header('Content-Type: application/json');
+            header('Content-Type: application/json');
             $json_data = file_get_contents("php://input");
             $data = json_decode($json_data, true);
 
@@ -190,22 +193,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $conexion->close();
         break;
 
-        case 'HEAD':
-            if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
-              // Establecer encabezados de respuesta
-              header('Content-Type: application/json');
-              header('Custom-Header: PHP 8, HTML ');
-          
-              // Puedes establecer otros encabezados necesarios aquí
-          
-              // No es necesario enviar un cuerpo en una solicitud HEAD, por lo que no se imprime nada aquí.
-          } else {
-              http_response_code(405); // Método no permitido
-              echo 'Método de solicitud no válido';
-          }
-            break;
+    case 'HEAD':
+        if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
+            // Establecer encabezados de respuesta
+            header('Content-Type: application/json');
+            header('Custom-Header: PHP 8, HTML ');
+
+            // Puedes establecer otros encabezados necesarios aquí
+
+            // No es necesario enviar un cuerpo en una solicitud HEAD, por lo que no se imprime nada aquí.
+        } else {
+            http_response_code(405); // Método no permitido
+            echo 'Método de solicitud no válido';
+        }
+        break;
 
     default:
         echo 'Tipo de solicitud no definido!';
 }
-

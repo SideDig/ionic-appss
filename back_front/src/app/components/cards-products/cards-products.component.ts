@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { productos } from '../../interfaces/index';
 import { ApiService } from 'src/app/services/api.service';
-import { UserDataService } from '../../services/user-data.service';
 @Component({
   selector: 'app-cards-products',
   templateUrl: './cards-products.component.html',
@@ -11,7 +10,7 @@ export class CardsProductsComponent  implements OnInit {
   public resp: productos[] = [];
   isLoading = false; // Controla el estado de carga
   error: string | null = null; // Almacena un mensaje de error si ocurre
-  constructor( private newService: ApiService, public userDataService: UserDataService) { }
+  constructor( private newService: ApiService) { }
 
   ngOnInit() {
     this.fetchProducts();

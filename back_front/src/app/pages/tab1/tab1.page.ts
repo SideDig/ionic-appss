@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Swiper } from 'swiper';
 import { banners } from '../../interfaces/index';
 import { ApiService } from '../../services/api.service';
-import { UserDataService } from '../../services/user-data.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +13,7 @@ export class Tab1Page implements OnInit {
   swiper?: Swiper;
   images: string[] = []; // Array para URLs de imágenes
 
-  constructor(private apiService: ApiService,  public userDataService: UserDataService, private router: Router,) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.loadBanners();
@@ -39,9 +37,5 @@ export class Tab1Page implements OnInit {
 
   swiperSlideChanged(e: any) {
     console.log('changed: ', e);
-  }
-
-  navegarAgregarProducto() {
-    this.router.navigate(['/admin-agregar-producto']);
   }
 }

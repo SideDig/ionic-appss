@@ -7,31 +7,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="nombre_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Descripcion</ion-label>
-    <ion-input type="text" [(ngModel)]="descripcion_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Precio</ion-label>
-    <ion-input type="number" [(ngModel)]="precio_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Link de la imagen</ion-label>
-    <ion-input type="text" [(ngModel)]="imagen_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Categoria</ion-label>
-    <ion-input type="number" [(ngModel)]="nombre_categoria"></ion-input>
-  </ion-item>
-  <ion-button expand="block" (click)="enviarDatos()">Enviar</ion-button>
+  <ion-searchbar class="buscador" [(ngModel)]="terminoBusqueda" (ionChange)="buscar()"></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let producto of productos$ | async">
+        <article class="card">
+          <div class="card-int">
+            <span class="card__span">{{ producto.nombre_categoria }}</span>
+            <div class="img">
+              <img height="100%" width="auto" [src]="producto.imagen_producto" alt="Imagen del producto">
+            </div>
+            <div class="card-data">
+              <p class="title">{{ producto.nombre_producto }}</p>
+              <p>Precio: ${{ producto.precio_producto }}</p>
+              <button class="button">Detalles</button>
+            </div>
+          </div>
+        </article>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

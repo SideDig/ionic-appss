@@ -16,14 +16,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para obtener los datos
+  // Productos
   getTopHeadlines(): Observable<productos> {
     return this.http
       .get<productos>(this.apiUrl_producto)
       .pipe(map((resp) => resp));
   }
 
-  // Método para enviar datos por POST
   postDatos(datos: any): Observable<any> {
     return this.http.post<any>(this.apiUrl_producto, datos, {
       responseType: 'text' as 'json',
@@ -39,6 +38,10 @@ export class ApiService {
     return this.http.delete<any>(this.apiUrl_producto, { ...httpOptions });
   }
 
+  buscarProductos(query: string): Observable<productos[]> {
+    return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, { params: { q: query } });
+  }
+
   //Usuarios
   saveUserData(user: User): Observable<any> {
     const httpOptions = {
@@ -49,6 +52,19 @@ export class ApiService {
       ...httpOptions,
     });
   }
+
+  verifyCredentials(email: string, password: string): Observable<any> {
+    const credentials = {
+      correo: email,
+      contrasena: password,
+      action: 'verifyCredentials'
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.http.post<any>(this.apiUrl_usuarios, credentials, httpOptions);
+  }
+  
 
   //banners
   getBanners(): Observable<banners[]> {

@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <swiper-container
     #swiper
     (afterinit)="swiperReady()"
@@ -17,5 +18,8 @@
       <img [src]="image" />
     </swiper-slide>
   </swiper-container>
+  <button (click)="navegarAgregarProducto()" class="btn-admin-Agregarproducto" *ngIf="userDataService.getRol() === 2">
+    Agrega un producto
+  </button>
   <app-cards-products></app-cards-products>
 </ion-content>

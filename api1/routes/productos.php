@@ -7,33 +7,33 @@ header('Content-Type: application/json');
 //print_r($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        header('Content-Type: application/json');
-        // Consulta SQL para seleccionar datos de la tabla
+        $searchTerm = isset($_GET['q']) ? $_GET['q'] : '';
+    
         $sql = "SELECT p.`id_producto`, 
-        p.`nombre_producto`, 
-        p.`descripcion_producto`, 
-        p.`precio_producto`, 
-        p.`imagen_producto`, 
-        c.`categoria` AS `nombre_categoria`
-        FROM 
-        `productos` p
-        JOIN 
-        `categorias` c ON p.`id_categorias` = c.`id`;";
-
+                p.`nombre_producto`, 
+                p.`descripcion_producto`, 
+                p.`precio_producto`, 
+                p.`imagen_producto`, 
+                c.`categoria` AS `nombre_categoria`
+                FROM `productos` p
+                JOIN `categorias` c ON p.`id_categorias` = c.`id`";
+    
+        if (!empty($searchTerm)) {
+            $sql .= " WHERE p.`nombre_producto` LIKE '%$searchTerm%'";
+        }
+    
         $query = $conexion->query($sql);
-
+    
         if ($query->num_rows > 0) {
             $data = array();
             while ($row = $query->fetch_assoc()) {
                 $data[] = $row;
             }
-            // Devolver los resultados en formato JSON
-            
             echo json_encode($data);
         } else {
             echo "No se encontraron registros en la tabla.";
         }
-
+    
         $conexion->close();
         break;
 

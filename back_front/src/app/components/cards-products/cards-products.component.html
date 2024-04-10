@@ -10,7 +10,7 @@
   </div>
 
   <div *ngIf="!isLoading && !error">
-    <div style="display: flex; justify-content: center; align-items: center;">
+    <div>
       <div>
         <ion-row>
           <ion-col size="6" *ngFor="let item of resp">
@@ -23,8 +23,8 @@
                 <div class="card-data">
                   <p class="title">{{ item.nombre_producto }}</p>
                   <p>Precio: ${{ item.precio_producto }}</p>
-                  <button class="button">Más información</button>
-                  <button class="button" (click)="confirmarEliminacion(item.id_producto)">Eliminar</button>
+                  <button class="button">Detalles</button>
+                  <button class="button" *ngIf="userDataService.getRol() === 2" (click)="confirmarEliminacion(item.id_producto)">Eliminar</button>
                 </div>
               </div>
             </article>

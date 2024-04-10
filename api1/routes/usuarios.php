@@ -36,62 +36,25 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $conexion->close();
         break;
 
-        case 'POST':
-            header('Content-Type: application/json');
-            $data = json_decode(file_get_contents("php://input"), true);
-    
-            // Verificar acción: Crear usuario o verificar credenciales
-            if (isset($data['action']) && $data['action'] === 'verifyCredentials') {
-                $correo_usuario = $data['correo'];
-                $contrasena_usuario = $data['contrasena'];
-                
-                $stmt = $conexion->prepare("SELECT id_usuario, usuario, correo, contrasena, id_rol FROM usuarios WHERE correo = ?");
-                $stmt->bind_param("s", $correo_usuario);
-                $stmt->execute();
-                $stmt->store_result();
-                
-                if ($stmt->num_rows > 0) {
-                    $stmt->bind_result($id_usuario, $nombre_usuario, $correo, $hashed_password, $id_rol);
-                    $stmt->fetch();
-                    
-                    if (password_verify($contrasena_usuario, $hashed_password)) {
-                        echo json_encode([
-                            "message" => "Credenciales verificadas con éxito.",
-                            "user" => [
-                                "id_usuario" => $id_usuario,
-                                "usuario" => $nombre_usuario,
-                                "correo" => $correo,
-                                "id_rol" => $id_rol
-                            ]
-                        ]);
-                    } else {
-                        http_response_code(401);
-                        echo json_encode(["error" => "Credenciales inválidas."]);
-                    }
-                } else {
-                    http_response_code(404);
-                    echo json_encode(["error" => "Usuario no encontrado."]);
-                }
-                $stmt->close();
-            } else {
-                // Lógica para crear un usuario
-                $nombre_usuario = $data['usuario'];
-                $correo_usuario = $data['correo'];
-                $contrasena_usuario = password_hash($data['contrasena'], PASSWORD_DEFAULT);
-                $id_rol_usuario = 1;
-    
-                $stmt = $conexion->prepare("INSERT INTO usuarios (usuario, correo, contrasena, id_rol) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("sssi", $nombre_usuario, $correo_usuario, $contrasena_usuario, $id_rol_usuario);
-    
-                if ($stmt->execute()) {
-                    echo json_encode(["message" => "Datos insertados con éxito."]);
-                } else {
-                    echo json_encode(["error" => "Error al insertar datos: " . $stmt->error]);
-                }
-                $stmt->close();
-            }
-            break;
+    case 'POST':
+        header('Content-Type: application/json');
+        $data = json_decode(file_get_contents("php://input"), true);
 
+        $nombre_usuario = $data['usuario'];
+        $correo_usuario = $data['correo'];
+        $contrasena_usuario = password_hash($data['contrasena'], PASSWORD_DEFAULT);
+
+        $stmt = $conexion->prepare("INSERT INTO usuarios (usuario, correo, contrasena) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $nombre_usuario, $correo_usuario, $contrasena_usuario);
+
+        if ($stmt->execute()) {
+            header('Content-Type: application/json');
+            echo "Datos insertados con éxito.";
+        } else {
+            echo "Error al insertar datos: " . $stmt->error;
+        }
+        $stmt->close();
+        break;
 
 
 

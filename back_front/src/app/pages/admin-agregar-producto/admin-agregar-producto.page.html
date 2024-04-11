@@ -6,35 +6,98 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form #productoForm="ngForm" (ngSubmit)="enviarDatos()">
+    <ion-list lines="full" class="ion-padding">
+      <span class="tituloProd">Productos</span>
+      <p style="text-align: center;">Hola Admin, Aquí puedes ver y agregar
+        productos.</p>
+      <ion-item>
+        <ion-icon name="cube-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Nombre del Producto</ion-label>
+        <ion-input type="text" required [(ngModel)]="nombre_producto"
+          name="nombre"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="nombre_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Descripcion</ion-label>
-    <ion-input type="text" [(ngModel)]="descripcion_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Precio</ion-label>
-    <ion-input type="number" [(ngModel)]="precio_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Link de la imagen</ion-label>
-    <ion-input type="text" [(ngModel)]="imagen_producto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Categoria</ion-label>
-    <ion-input type="number" [(ngModel)]="nombre_categoria"></ion-input>
-  </ion-item>
-  <ion-button expand="block" (click)="enviarDatos()">Enviar</ion-button>
-  <p [ngStyle]="{'text-align': 'center'}" >Hola Admin, bienvenido aqui podras agregar productos</p>
+      <ion-item>
+        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input type="text" [(ngModel)]="descripcion_producto"
+          name="descripcion"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input type="number" [(ngModel)]="precio_producto"
+          name="precio"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="image-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Link de la Imagen</ion-label>
+        <ion-input type="text" [(ngModel)]="imagen_producto"
+          name="imagen"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="apps-outline" slot="start"></ion-icon>
+        <ion-label>Categoría</ion-label>
+        <ion-select [(ngModel)]="nombre_categoria" name="categoria">
+          <ion-select-option value="1">Acción</ion-select-option>
+          <ion-select-option value="2">Aventura</ion-select-option>
+          <ion-select-option value="3">Rol (RPG)</ion-select-option>
+          <ion-select-option value="4">Simulación</ion-select-option>
+          <ion-select-option value="5">Estrategia</ion-select-option>
+          <ion-select-option value="6">Deportes</ion-select-option>
+          <ion-select-option value="7">Carreras</ion-select-option>
+          <ion-select-option value="8">Lucha</ion-select-option>
+          <ion-select-option value="9">Horror de
+            Supervivencia</ion-select-option>
+          <ion-select-option value="10">Puzzle</ion-select-option>
+          <ion-select-option value="11">MMO</ion-select-option>
+          <ion-select-option value="12">Plataformas</ion-select-option>
+          <ion-select-option value="13">Shooter</ion-select-option>
+          <ion-select-option value="14">Indie</ion-select-option>
+          <ion-select-option value="15">Sandbox</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="game-controller-outline" slot="start"></ion-icon>
+        <ion-label>Plataforma</ion-label>
+        <ion-select [(ngModel)]="nombre_plataforma" name="plataforma">
+          <ion-select-option value="1">PC</ion-select-option>
+          <ion-select-option value="2">PlayStation</ion-select-option>
+          <ion-select-option value="3">Xbox</ion-select-option>
+          <ion-select-option value="4">Nintendo Switch</ion-select-option>
+          <ion-select-option value="5">Antiguas generaciones</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <ion-button type="submit" expand="block" color="success">
+      Enviar
+    </ion-button>
+  </form>
+  <br>
+  <h2>Lista de productos</h2>
+  <ion-list>
+    <ion-item lines="full" button detail detailIcon="chevron-forward-outline" *ngFor="let producto of resp" class="producto-item">
+      <ion-avatar slot="start" class="producto-avatar">
+        <img [src]="producto.imagen_producto" alt="{{ producto.nombre_producto }}">
+      </ion-avatar>
+      <ion-label class="producto-label">
+        <h2>{{ producto.nombre_producto }}</h2>
+        <p>{{ producto.descripcion_producto }}</p>
+        <ion-note class="producto-precio">${{ producto.precio_producto }}</ion-note>
+        <p class="categoria-plataforma">{{ producto.nombre_categoria }} - {{ producto.nombre_plataforma }}</p>
+        <ion-button expand="block"  color="danger" (click)="confirmarEliminacion(producto.id_producto)">
+          Eliminar
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
-
-

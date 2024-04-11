@@ -1,0 +1,43 @@
+.tituloProd{
+    font-size: 19px;
+   
+}
+
+
+.producto-item {
+    --border-radius: 15px;
+    --background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .producto-avatar {
+    --border-radius: 50%;
+  }
+  
+  .producto-label {
+    h2 {
+      color: #000000;
+      font-weight: bold;
+    }
+    
+    p {
+      color: #666;
+    }
+  
+    .producto-precio {
+      color: #000000;
+      font-weight: bold;
+    }
+  
+    .categoria-plataforma {
+      font-style: italic;
+      color: #666;
+    }
+  }
+  
+  
+  

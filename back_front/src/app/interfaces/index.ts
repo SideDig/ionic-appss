@@ -7,6 +7,7 @@ export interface productos {
     precio_producto?:      number;
     imagen_producto?:      String;
     nombre_categoria?:     number;
+    nombre_plataforma?:    number;
 }
 
 export interface User {

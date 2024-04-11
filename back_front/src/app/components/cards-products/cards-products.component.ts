@@ -9,8 +9,8 @@ import { UserDataService } from '../../services/user-data.service';
 })
 export class CardsProductsComponent  implements OnInit {
   public resp: productos[] = [];
-  isLoading = false; // Controla el estado de carga
-  error: string | null = null; // Almacena un mensaje de error si ocurre
+  isLoading = false; 
+  error: string | null = null; 
   constructor( private newService: ApiService, public userDataService: UserDataService) { }
 
   ngOnInit() {
@@ -18,18 +18,18 @@ export class CardsProductsComponent  implements OnInit {
   }
 
   fetchProducts() {
-    this.isLoading = true; // Comienza la carga
+    this.isLoading = true;
     this.newService.getTopHeadlines().subscribe({
       next: (resp) => {
-        this.isLoading = false; // Detiene la carga cuando los datos son recibidos
+        this.isLoading = false; 
         if (Array.isArray(resp)) {
           this.resp = resp;
         } else {
           this.resp = [resp];
         }
       }, error: (error) => {
-        this.isLoading = false; // Detiene la carga si ocurre un error
-        this.error = "No se pudieron cargar los productos."; // Mensaje de error
+        this.isLoading = false;
+        this.error = "No se pudieron cargar los productos."; 
         console.error(error);
       }
     });
@@ -48,7 +48,7 @@ export class CardsProductsComponent  implements OnInit {
       },
       error: (error) => {
         console.error("Error al eliminar el registro:", error);
-        this.error = "Error al eliminar el producto."; // Asume que tienes una manera de mostrar esto en tu UI
+        this.error = "Error al eliminar el producto.";
       }
     });
   }

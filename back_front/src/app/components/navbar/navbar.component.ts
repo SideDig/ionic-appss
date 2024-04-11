@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserDataService } from '../../services/user-data.service'; // Importa el servicio UserDataService
-import { Auth, signOut } from '@angular/fire/auth'; // Importa el servicio de autenticación
+import { UserDataService } from '../../services/user-data.service'; 
+import { Auth, signOut } from '@angular/fire/auth'; 
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit { // Implementa la interfaz OnInit
-  userEmail: string = ""; // Declara e inicializa la propiedad userEmail
+export class NavbarComponent implements OnInit { 
+  userEmail: string = "";
   
   constructor(
     private router: Router,
@@ -18,7 +18,6 @@ export class NavbarComponent implements OnInit { // Implementa la interfaz OnIni
   ) {}
 
   ngOnInit() {
-    // Cuando se inicializa el componente, obtén el correo del usuario del servicio UserDataService
     this.userEmail = this.userDataService.getCorreo();
   }
 
@@ -29,9 +28,7 @@ export class NavbarComponent implements OnInit { // Implementa la interfaz OnIni
   async logout() {
     try {
       await signOut(this.auth);
-      // Limpiar datos de usuario en el servicio UserDataService
-      this.userDataService.clearUserData();
-      // Redirigir al usuario a la página de inicio de sesión
+      this.userDataService.clearUserData(); 
       this.router.navigate(['/login']);
     } catch (error) {
       console.error("Error al cerrar sesión:", error);

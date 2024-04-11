@@ -39,7 +39,7 @@ export class ApiService {
   }
 
   buscarProductos(query: string): Observable<productos[]> {
-    return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, { params: { q: query } });
+    return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, { params: { buscar: query } });
   }
 
   //Usuarios

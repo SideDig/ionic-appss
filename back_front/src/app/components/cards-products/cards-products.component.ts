@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { productos } from '../../interfaces/index';
 import { ApiService } from 'src/app/services/api.service';
 import { UserDataService } from '../../services/user-data.service';
@@ -8,10 +8,11 @@ import { UserDataService } from '../../services/user-data.service';
   styleUrls: ['./cards-products.component.scss'],
 })
 export class CardsProductsComponent  implements OnInit {
+  @Input() categoriaId: number;
   public resp: productos[] = [];
   isLoading = false; 
   error: string | null = null; 
-  constructor( private newService: ApiService, public userDataService: UserDataService) { }
+  constructor( private apiService: ApiService, public userDataService: UserDataService) { }
 
   ngOnInit() {
     this.fetchProducts();
@@ -19,17 +20,24 @@ export class CardsProductsComponent  implements OnInit {
 
   fetchProducts() {
     this.isLoading = true;
-    this.newService.getTopHeadlines().subscribe({
+    let requestObservable;
+  
+    if (this.categoriaId) {
+      
+      requestObservable = this.apiService.productoPorCategoria(this.categoriaId);
+    } else {
+    
+      requestObservable = this.apiService.getTopHeadlines();
+    }
+  
+    requestObservable.subscribe({
       next: (resp) => {
-        this.isLoading = false; 
-        if (Array.isArray(resp)) {
-          this.resp = resp;
-        } else {
-          this.resp = [resp];
-        }
-      }, error: (error) => {
         this.isLoading = false;
-        this.error = "No se pudieron cargar los productos."; 
+        this.resp = Array.isArray(resp) ? resp : [resp];
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.error = "No hay productos disponibles";
         console.error(error);
       }
     });
@@ -41,7 +49,7 @@ export class CardsProductsComponent  implements OnInit {
       return;
     }
     
-    this.newService.eliminarDato(id_producto).subscribe({
+    this.apiService.eliminarDato(id_producto).subscribe({
       next: (response) => {
         console.log(response);
         this.resp = this.resp.filter(item => item.id_producto !== id_producto);

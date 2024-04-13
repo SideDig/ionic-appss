@@ -8,6 +8,7 @@ header('Content-Type: application/json');
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $searchTerm = isset($_GET['buscar']) ? $_GET['buscar'] : '';
+        $id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : null;
 
         $sql = "SELECT p.`id_producto`, 
                 p.`nombre_producto`, 
@@ -20,7 +21,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
         JOIN `categorias` c ON p.`id_categorias` = c.`id`
         JOIN `plataformas` pf ON p.`id_plataforma` = pf.`id`";
 
-        if (!empty($searchTerm)) {
+        if ($id_categoria) {
+            $sql .= " WHERE c.`id` = $id_categoria";
+        } else if (!empty($searchTerm)) {
             $sql .= " WHERE p.`nombre_producto` LIKE '%$searchTerm%'";
         }
 

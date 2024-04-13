@@ -29,9 +29,9 @@ $router = new Router();
 $router->addRoute('/usuarios', './routes/usuarios.php');
 $router->addRoute('/productos', './routes/productos.php');
 $router->addRoute('/banners', './routes/banners.php');
+$router->addRoute('/categorias', './routes/categorias.php');
 $router->addRoute('/auth', './routes/auth.php');
 
 // Modificar la línea que procesa la URL para eliminar cualquier parámetro de consulta
 $url = strtok(str_replace('/api1', '', $_SERVER['REQUEST_URI']), '?');
 $router->route($url);
-?>

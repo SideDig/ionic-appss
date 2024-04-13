@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
 import { productos } from '../interfaces';
+import { categoria } from '../interfaces';
 import { User } from '../interfaces';
 import { banners } from '../interfaces';
 import { map } from 'rxjs/operators';
@@ -10,9 +11,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ApiService {
-  public apiUrl_producto = 'http://127.0.0.1:80/api1/productos'; // Reemplaza con la URL de tu API
+  public apiUrl_producto = 'http://127.0.0.1:80/api1/productos'; 
   public apiUrl_usuarios = 'http://127.0.0.1:80/api1/usuarios';
   public apiUrl_banners = 'http://127.0.0.1:80/api1/banners';
+  public apiUrl_categoria = 'http://127.0.0.1:80/api1/categorias';
 
   constructor(private http: HttpClient) {}
 
@@ -42,6 +44,10 @@ export class ApiService {
     return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, { params: { buscar: query } });
   }
 
+  productoPorCategoria(query: number): Observable<productos[]> {
+    return this.http.get<productos[]>(`${this.apiUrl_producto}/id_categoria`, {params: { id_categoria:query}});
+  }
+
   //Usuarios
   saveUserData(user: User): Observable<any> {
     const httpOptions = {
@@ -69,5 +75,12 @@ export class ApiService {
   //banners
   getBanners(): Observable<banners[]> {
     return this.http.get<banners[]>(this.apiUrl_banners);
+  }
+
+  //categorias
+  ObtenerCategorias(): Observable<categoria> {
+    return this.http
+      .get<categoria>(this.apiUrl_categoria)
+      .pipe(map((resp) => resp));
   }
 }

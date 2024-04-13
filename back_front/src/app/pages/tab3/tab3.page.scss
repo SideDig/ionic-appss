@@ -1,0 +1,51 @@
+
+  
+  .accordion-header {
+    background: linear-gradient(to right, #6a11cb, #2575fc); 
+    border-radius: 10px;
+    margin: 8px;
+    color: white; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  ion-accordion-group {
+    --background: #ffffff; 
+    --border-color: transparent; 
+  }
+ 
+  
+  app-cards-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 10px;
+    padding: 10px;
+  
+    .product-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+  
+      &:hover {
+        transform: translateY(-5px); 
+      }
+  
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover; 
+      }
+  
+      .info {
+        padding: 10px;
+        text-align: center;
+      }
+    }
+  }
+  

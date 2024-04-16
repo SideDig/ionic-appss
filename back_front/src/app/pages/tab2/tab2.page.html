@@ -21,7 +21,8 @@
             <div class="card-data">
               <p class="title">{{ producto.nombre_producto }}</p>
               <p>Precio: ${{ producto.precio_producto }}</p>
-              <button class="button">Detalles</button>
+              <button class="button"
+                  (click)="verDetalles(producto.id_producto)">Detalles</button>
             </div>
           </div>
         </article>

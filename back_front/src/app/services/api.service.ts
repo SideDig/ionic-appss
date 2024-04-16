@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ApiService {
-  public apiUrl_producto = 'http://127.0.0.1:80/api1/productos'; 
+  public apiUrl_producto = 'http://127.0.0.1:80/api1/productos';
   public apiUrl_usuarios = 'http://127.0.0.1:80/api1/usuarios';
   public apiUrl_banners = 'http://127.0.0.1:80/api1/banners';
   public apiUrl_categoria = 'http://127.0.0.1:80/api1/categorias';
@@ -41,11 +41,19 @@ export class ApiService {
   }
 
   buscarProductos(query: string): Observable<productos[]> {
-    return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, { params: { buscar: query } });
+    return this.http.get<productos[]>(`${this.apiUrl_producto}/buscar`, {
+      params: { buscar: query },
+    });
   }
 
   productoPorCategoria(query: number): Observable<productos[]> {
-    return this.http.get<productos[]>(`${this.apiUrl_producto}/id_categoria`, {params: { id_categoria:query}});
+    return this.http.get<productos[]>(`${this.apiUrl_producto}/id_categoria`, {
+      params: { id_categoria: query },
+    });
+  }
+
+  productosPorId(query: number): Observable<productos> {
+    return this.http.get<productos>(`${this.apiUrl_producto}/${query}`);
   }
 
   //Usuarios
@@ -63,14 +71,13 @@ export class ApiService {
     const credentials = {
       correo: email,
       contrasena: password,
-      action: 'verifyCredentials'
+      action: 'verifyCredentials',
     };
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.http.post<any>(this.apiUrl_usuarios, credentials, httpOptions);
   }
-  
 
   //banners
   getBanners(): Observable<banners[]> {

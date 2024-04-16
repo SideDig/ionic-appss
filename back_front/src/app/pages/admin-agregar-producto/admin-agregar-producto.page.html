@@ -1,12 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <app-navbar></app-navbar>
-    </ion-title>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <app-navbar></app-navbar>
   </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content [fullscreen]="true">
   <form #productoForm="ngForm" (ngSubmit)="enviarDatos()">

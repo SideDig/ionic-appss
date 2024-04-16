@@ -14,9 +14,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'admin-agregar-producto',
     loadChildren: () => import('./pages/admin-agregar-producto/admin-agregar-producto.module').then( m => m.AdminAgregarProductoPageModule)
+  },
+  {
+    path: 'info-producto/:id',
+    loadChildren: () => import('./pages/info-producto/info-producto.module').then( m => m.InfoProductoPageModule)
   }
 
 

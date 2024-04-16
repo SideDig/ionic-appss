@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <app-navbar></app-navbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-background">
+  <ion-grid *ngIf="isLoading" class="loading-container">
+    <ion-row>
+      <ion-col size="12">
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="!isLoading && producto" class="product-details-grid">
+    <ion-row>
+      
+      <ion-col size="12" size-md="6">
+        <ion-card class="product-info-card">
+          <ion-card-header>
+            <ion-card-title class="product-title">{{ producto.nombre_producto }}</ion-card-title>
+            <ion-card-subtitle class="product-subtitle">{{ producto.nombre_categoria }} | {{ producto.nombre_plataforma }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-col class="ajustarIMG" size="12" size-md="6">
+            <img width="130px" height="auto" [src]="producto.imagen_producto" alt="Imagen del producto" class="product-image">
+          </ion-col>
+          <ion-card-content>
+            <p class="price-label">Precio: ${{ producto.precio_producto }}</p>
+            <p class="product-description">{{ producto.descripcion_producto || 'Descripción no disponible' }}</p>
+            <ion-button expand="block" color="success" class="buy-button">Comprar Ahora</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="!isLoading && !producto">
+    <ion-row>
+      <ion-col size="12">
+        <p class="error-message">No se pudo cargar la información del producto.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3>Recomendaciones</h3>
+  <app-cards-products></app-cards-products>
+</ion-content>

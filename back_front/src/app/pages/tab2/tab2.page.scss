@@ -85,6 +85,25 @@
   }
   
   .buscador {
-    border: black;
-    background-color: rgb(255, 255, 255);
+    --background: rgb(0, 0, 0); /* Fondo blanco para la barra de búsqueda */
+    --placeholder-color: #ffffff; /* Color del placeholder más suave */
+    --icon-color: #ffffff; /* Color de los íconos dentro de la barra */
+    --color: #ffffff; /* Color del texto que los usuarios escriben */
+    --border-radius: 15px; /* Bordes redondeados para un look moderno */
+    --padding-start: 1rem; /* Acolchado inicial para el texto */
+    --padding-end: 1rem; /* Acolchado final para mantener el equilibrio visual */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave para darle profundidad */
+    height: 50px; /* Altura especificada para una presencia más significativa */
   }
+  
+  /* Estilos para el estado activo/foco de la barra de búsqueda */
+  .buscador.sc-ion-searchbar-md:focus-within {
+    box-shadow: 0 8px 10px rgba(0,0,0,0.15); /* Sombra más prominente cuando está enfocada */
+  }
+  
+  /* Ajustar el tamaño de los iconos dentro de la barra de búsqueda */
+  .buscador .searchbar-search-icon,
+  .buscador .searchbar-clear-icon {
+    font-size: 1.2rem;
+  }
+  

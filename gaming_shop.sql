@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2024 a las 08:23:18
+-- Tiempo de generación: 16-04-2024 a las 04:31:43
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -118,31 +118,26 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `imagen_producto`, `id_categorias`, `id_plataforma`) VALUES
-(94, 'The Legend of Zelda: Breath of the Wild', 'Explora el vasto mundo de Hyrule en esta aventura épica.', 60, 'imagenZelda.jpg', 1, 1),
-(95, 'Super Mario Odyssey', 'Únete a Mario en un gigantesco viaje por el mundo.', 50, 'imagenMario.jpg', 1, 1),
-(96, 'Minecraft', 'Crea y explora tu propio mundo donde el único límite es tu imaginación.', 27, 'imagenMinecraft.jpg', 2, 3),
-(97, 'Elden Ring', 'Enfréntate a un mundo lleno de peligros y maravillas en el nuevo juego de FromSoftware.', 60, 'imagenEldenRing.jpg', 3, 2),
-(98, 'God of War Ragnarök', 'Sigue la próxima etapa del viaje épico de Kratos y Atreus.', 60, 'imagenGodOfWar.jpg', 1, 4),
-(99, 'Animal Crossing: New Horizons', 'Crea tu propio paraíso en una isla desierta.', 56, 'imagenAnimalCrossing.jpg', 1, 1),
-(100, 'Final Fantasy VII Remake', 'Redescubre el icónico RPG que redefinió el género, ahora totalmente reimaginado.', 60, 'imagenFFVII.jpg', 1, 4),
-(101, 'Cyberpunk 2077', 'Sumérgete en el mundo de Night City en este RPG de mundo abierto.', 50, 'imagenCyberpunk.jpg', 3, 2),
-(102, 'Halo Infinite', 'Continúa la saga del Jefe Maestro en el más grande Halo hasta la fecha.', 60, 'imagenHalo.jpg', 1, 5),
-(103, 'Genshin Impact', 'Explora el vasto mundo de Teyvat en esta experiencia de RPG de mundo abierto.', 0, 'imagenGenshin.jpg', 2, 3),
-(104, 'The Witcher 3: Wild Hunt', 'Embárcate en una aventura épica en un mundo oscuro lleno de peligros.', 40, 'imagenWitcher3.jpg', 3, 2),
-(105, 'Fortnite', 'Compite para ser el último en pie en el fenómeno del battle royale.', 0, 'imagenFortnite.jpg', 4, 3),
-(106, 'Assassin’s Creed Valhalla', 'Vive como un legendario vikingo en la búsqueda de gloria.', 60, 'imagenACValhalla.jpg', 3, 2),
+(96, 'Minecraft', 'Crea y explora tu propio mundo donde el único límite es tu imaginación.', 599, 'https://image.api.playstation.com/vulcan/img/cfn/11307uYG0CXzRuA9aryByTHYrQLFz-HVQ3VVl7aAysxK15HMpqjkAIcC_R5vdfZt52hAXQNHoYhSuoSq_46_MT_tDBcLu49I.png', 2, 3),
+(97, 'Elden Ring', 'Enfréntate a un mundo lleno de peligros y maravillas en el nuevo juego de FromSoftware.', 999, 'https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/aGhopp3MHppi7kooGE2Dtt8C.png', 3, 2),
+(98, 'God of War Ragnarök', 'Sigue la próxima etapa del viaje épico de Kratos y Atreus.', 60, 'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7', 1, 4),
+(99, 'Animal Crossing: New Horizons', 'Crea tu propio paraíso en una isla desierta.', 800, 'https://m.media-amazon.com/images/I/71EsARfsklS._AC_UF1000,1000_QL80_.jpg', 1, 1),
+(100, 'Final Fantasy VII Remake', 'Redescubre el icónico RPG que redefinió el género, ahora totalmente reimaginado.', 200, 'https://image.api.playstation.com/vulcan/img/cfn/11307-dNapclgq_VqNtQ98Xp_LxovvAdjd5AknZhd_-k2Cckq9FPtKDXAHk-ODCfvDKChH6hkEO0VLtj7Vk4E-Z8G707oe0N.png', 1, 4),
+(101, 'Cyberpunk 2077', 'Sumérgete en el mundo de Night City en este RPG de mundo abierto.', 600, 'https://store-images.s-microsoft.com/image/apps.47379.63407868131364914.bcaa868c-407e-42c2-baeb-48a3c9f29b54.89bb995b-b066-4a53-9fe4-0260ce07e894', 3, 2),
+(102, 'Halo Infinite', 'Continúa la saga del Jefe Maestro en el más grande Halo hasta la fecha.', 700, 'https://m.media-amazon.com/images/I/81r6IF9GNNL._AC_UF1000,1000_QL80_.jpg', 1, 5),
+(106, 'Assassin’s Creed Valhalla', 'Vive como un legendario vikingo en la búsqueda de gloria.', 800, 'https://static.posters.cz/image/1300/plakaty/assassin-s-creed-valhalla-eivor-i96339.jpg', 3, 2),
 (107, 'Call of Duty: Warzone', 'Enfréntate en esta frenética batalla para sobrevivir.', 0, 'imagenCODWarzone.jpg', 4, 3),
-(108, 'Resident Evil Village', 'Experimenta el terror de sobrevivencia en un nuevo nivel.', 60, 'imagenREVillage.jpg', 1, 4),
-(111, 'pruebaa', 'pruebha', 12222, 'jfdlaf', 4, 4),
-(112, 'Purebaaa', 'aadasafasfaf', 2323, 'fgg', 3, 5),
-(113, 'pruebaa2', 'fjkjegksg', 31323, 'HFKSGSG', 2, 3),
-(114, 'gsgsgs', 'egsegfsdgs', 222, 'sd', 5, 2),
-(115, 'papu', 'papu', 123, 'sgsg', 2, 5),
-(116, 'pepe', 'pepe', 1213, 'ppe', 3, 5),
-(124, 'tilin', 'tiluun', 1212, 'fsgg', 13, 3),
-(125, 'aaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaa', 1, 'aaaaaaaa', 3, 1),
-(126, 'nnnnnnn', 'nnnnnn', 1, 'aaaaaaaa', 3, 1),
-(127, 'noseeeee', 'noseeee', 1111, 'faaa', 14, 3);
+(108, 'Resident Evil Village', 'Experimenta el terror de sobrevivencia en un nuevo nivel.', 900, 'https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png', 1, 3),
+(109, 'Super Mario Odyssey', 'Embárcate en una gran aventura alrededor del mundo con Mario', 1300, 'https://m.media-amazon.com/images/I/91-VfRp-i0L._AC_UF1000,1000_QL80_.jpg', 5, 4),
+(110, 'The Witcher 3: Wild Hunt', 'Explora un mundo abierto mágico y peligroso como el brujo Geralt', 1200, 'https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png', 6, 1),
+(111, 'Dark Souls III', 'Enfréntate a desafíos brutales en este oscuro juego de rol', 1500, 'https://image.api.playstation.com/cdn/EP0700/CUSA03365_00/gSJkkVfpqk8qEp3fQglGcu3OLbXeHJ1W.png', 7, 3),
+(112, 'Persona 5', 'Vive una doble vida como estudiante de día y ladrón de corazones de noche', 1400, 'https://image.api.playstation.com/vulcan/img/cfn/11307XlqDFlHmHWGjBPndSappCDTnE9OmnP2P-dSzcvLX9i0pvH_okJOl6dP1AnZefxthD-2k3RrsdzYU_BqUy9K5_sv-Tnx.png', 8, 3),
+(113, 'Metroid Dread', 'Ayuda a Samus a escapar de un planeta hostil en su última aventura', 1250, 'https://m.media-amazon.com/images/I/71LVHNX3vLS._AC_UF1000,1000_QL80_.jpg', 9, 4),
+(114, 'Sekiro: Shadows Die Twice', 'Domina el arte del combate samurái en este título de acción', 1350, 'https://image.api.playstation.com/vulcan/img/rnd/202010/2723/knxU5uU5aKvQChKX5OvWtSGC.png', 10, 1),
+(115, 'Mass Effect: Andromeda', 'Explora la galaxia de Andromeda en este juego de rol de ciencia ficción', 1100, 'https://m.media-amazon.com/images/I/71At6yCGUKL._AC_UF1000,1000_QL80_.jpg', 11, 4),
+(116, 'Splatoon 2', 'Compite en batallas de tinta multijugador en el mundo de Splatoon', 990, 'https://m.media-amazon.com/images/I/81F9LrZ7YgL._AC_UF1000,1000_QL80_.jpg', 12, 4),
+(117, 'Gears 5', 'Continúa la saga épica de Gears of War en este intenso shooter', 1080, 'https://store-images.s-microsoft.com/image/apps.9700.14591801423393397.e1044226-28d7-42f6-a357-7102f7d1a4b3.b11e46da-8c40-42d7-8a61-f98879101d4a', 13, 3),
+(118, 'Nier: Automata', 'Descubre los misterios de un futuro distópico en este juego de acción y rol', 1350, 'https://image.api.playstation.com/cdn/UP0082/CUSA04551_00/WkgJ8OLvEkfoZmY65B8cudKYw8Aylp1y.png', 14, 1);
 
 -- --------------------------------------------------------
 
@@ -265,7 +260,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -306,27 +301,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- global.php para 000webhost
-
--- <?php
-
--- //definimos la codificaci贸n de los caracteres
--- define("DB_ENCODE","utf8mb4");
-
--- //Definimos una constante como nombre del proyecto
--- define("PRO_NOMBRE","cc");
-
--- //datos de producci贸n, descomentar para pasar
--- define("DB_HOST","localhost");
-
--- //Nombre de la base de datos pr
--- define("DB_NAME", "id21999006_gaming_shop");
-
--- //Usuario de la base de datos pr
--- define("DB_USERNAME", "id21999006_localhost");
-
--- //Contrase帽a del usuario de la base de datos
--- define("DB_PASSWORD", "Gamingshop123-");
-
--- ?>

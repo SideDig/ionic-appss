@@ -9,6 +9,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $searchTerm = isset($_GET['buscar']) ? $_GET['buscar'] : '';
         $id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : null;
+        $id_producto = isset($_GET['id_producto']) ? $_GET['id_producto'] : null;
 
         $sql = "SELECT p.`id_producto`, 
                 p.`nombre_producto`, 
@@ -25,22 +26,32 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $sql .= " WHERE c.`id` = $id_categoria";
         } else if (!empty($searchTerm)) {
             $sql .= " WHERE p.`nombre_producto` LIKE '%$searchTerm%'";
+        } else if ($id_producto) {
+            $sql .= " WHERE p.`id_producto` = $id_producto";
         }
 
         $query = $conexion->query($sql);
 
         if ($query->num_rows > 0) {
-            $data = array();
-            while ($row = $query->fetch_assoc()) {
-                $data[] = $row;
+           
+            if ($id_producto) {
+                $data = $query->fetch_assoc();
+            } else {
+                $data = array();
+                while ($row = $query->fetch_assoc()) {
+                    $data[] = $row;
+                }
             }
             echo json_encode($data);
         } else {
-            echo "No se encontraron registros en la tabla.";
+            // Usar un objeto JSON para el mensaje de error es más coherente para clientes de la API
+            echo json_encode(["error" => "No se encontraron registros en la tabla."]);
         }
 
         $conexion->close();
         break;
+
+
 
     case 'POST':
         header('Content-Type: application/json');
